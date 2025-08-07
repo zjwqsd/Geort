@@ -1,3 +1,5 @@
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 import numpy as np
 import sapien.core as sapien
 from torch.utils.data import DataLoader
@@ -9,7 +11,6 @@ from geort.utils.config_utils import get_config, save_json
 from geort.utils.hand_utils import get_entity_by_name, get_active_joints, get_active_joint_indices
 from datetime import datetime
 from tqdm import tqdm 
-import os
 from pathlib import Path 
 import math
 
@@ -23,7 +24,7 @@ class HandKinematicModel:
         n_hand_dof=16,
         base_link="base_link",
         joint_names=[],
-        kp=500.0,
+        kp=200.0,
         kd=10,
         **kwargs
     ):

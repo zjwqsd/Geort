@@ -1,0 +1,17 @@
+# NOTE: please install PyTorch manually
+name: geort
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pinocchio
+  - pip
+  - pip:
+      - numpy
+      - scipy
+      - tqdm
+      - sapien
+      - open3d
+      - trimesh
+      - zmq
+      - six
