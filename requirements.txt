@@ -1,11 +1,12 @@
-torch
+torch>=2.0
 torchvision
 torchaudio
-numpy
+
+numpy>=1.25
 scipy
-sapien
-gym
 tqdm
-open3d
 trimesh
 zmq
+open3d
+six
+sapien

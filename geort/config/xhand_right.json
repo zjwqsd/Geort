@@ -74,8 +74,8 @@
     ],
 
     "joint_range_clip_ratio": {
-        "right_hand_thumb_bend_joint": [0.2, 1.0],
-        "right_hand_thumb_rota_joint1": [0.5, 1.0]
+        "right_hand_thumb_bend_joint": [0.0, 1.0],
+        "right_hand_thumb_rota_joint1": [0.0, 1.0]
     }
 
 }

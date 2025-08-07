@@ -17,11 +17,13 @@
 ## 🔧 安装与环境检查
 
 ```bash
-conda create -n geort python=3.12
+# 创建新环境（使用 mamba 更快）
+mamba env create -f environment.yml
+mamba activate geort
+
+# 或使用 conda（稍慢）
+conda env create -f environment.yml
 conda activate geort
-pip install -r requirements.txt
-pip install -e .
-python testEnv.py  # 检查 torch, sapien 等依赖
 ```
 
 ---
@@ -46,8 +48,15 @@ python testEnv.py  # 检查 torch, sapien 等依赖
 可视化检查：
 
 ```bash
-python geort/env/hand.py --hand xhand_right
+python geort/env/hand.py --hand xhand_right #检查控制是否自然
+python scripts\checkkeypoints.py #检查指尖偏移量设置是否正确
 ```
+
+xhand 提供的 urdf 似乎有点问题，如遇到相关错误可以运行 `scripts\check_urdf_inertia.py` 进行检查或者`scripts\fix_urdf_inertia.py` 进行修复。
+
+
+
+
 
 ---
 

@@ -1,5 +1,5 @@
 *.pyc
 checkpoint/
-data/
-assets/
 .vscode/
+geort.egg-info/
+*.zip
