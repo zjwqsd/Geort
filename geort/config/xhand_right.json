@@ -1,0 +1,81 @@
+{
+    "name": "xhand_right",
+    "urdf_path": "./assets/xhand_right/urdf/xhand_right.urdf",
+    "base_link": "right_hand_link",
+
+    "joint_order": [
+        "right_hand_thumb_bend_joint",
+        "right_hand_thumb_rota_joint1",
+        "right_hand_thumb_rota_joint2",
+        "right_hand_index_bend_joint",
+        "right_hand_index_joint1",
+        "right_hand_index_joint2",
+        "right_hand_mid_joint1",
+        "right_hand_mid_joint2",
+        "right_hand_ring_joint1",
+        "right_hand_ring_joint2",
+        "right_hand_pinky_joint1",
+        "right_hand_pinky_joint2"
+    ],
+
+    "fingertip_link": [
+        {
+            "name": "thumb",
+            "link": "right_hand_thumb_rota_tip",
+            "joint": [
+                "right_hand_thumb_bend_joint",
+                "right_hand_thumb_rota_joint1",
+                "right_hand_thumb_rota_joint2"
+            ],
+            "center_offset": [0.0, 0.0, -0.0],
+            "human_hand_id": 4
+        },
+        {
+            "name": "index",
+            "link": "right_hand_index_rota_tip",
+            "joint": [
+                "right_hand_index_bend_joint",
+                "right_hand_index_joint1",
+                "right_hand_index_joint2"
+            ],
+            "center_offset": [0.0, 0.0, -0.0],
+            "human_hand_id": 8
+        },
+        {
+            "name": "middle",
+            "link": "right_hand_mid_tip",
+            "joint": [
+                "right_hand_mid_joint1",
+                "right_hand_mid_joint2"
+            ],
+            "center_offset": [0.0, 0.0, -0.0],
+            "human_hand_id": 12
+        },
+        {
+            "name": "ring",
+            "link": "right_hand_ring_tip",
+            "joint": [
+                "right_hand_ring_joint1",
+                "right_hand_ring_joint2"
+            ],
+            "center_offset": [0.0, 0.0, -0.0],
+            "human_hand_id": 16
+        },
+        {
+            "name": "pinky",
+            "link": "right_hand_pinky_tip",
+            "joint": [
+                "right_hand_pinky_joint1",
+                "right_hand_pinky_joint2"
+            ],
+            "center_offset": [0.0, 0.0, -0.0],
+            "human_hand_id": 20
+        }
+    ],
+
+    "joint_range_clip_ratio": {
+        "right_hand_thumb_bend_joint": [0.2, 1.0],
+        "right_hand_thumb_rota_joint1": [0.5, 1.0]
+    }
+
+}
