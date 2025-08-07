@@ -26,6 +26,44 @@ conda env create -f environment.yml
 conda activate geort
 ```
 
+### 安装 PyTorch（需手动执行）
+
+请根据你的 **CUDA 版本** 安装对应的 PyTorch 版本：
+
+```bash
+# 查看本机 CUDA 版本
+nvidia-smi
+```
+
+示例安装命令（根据实际情况选用）：
+
+```bash
+CUDA 12.1
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+# CUDA 11.8
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+# CPU-only（无独显或调试用）
+pip install torch torchvision torchaudio
+```
+
+------
+
+### ✅ 安装 GeoRT 本地包
+
+```
+pip install -e .
+```
+
+最后运行
+
+```bash
+python testEnv.py
+```
+
+检查环境
+
 ---
 
 ## 🛠 使用流程概览（新增功能）
@@ -52,11 +90,7 @@ python geort/env/hand.py --hand xhand_right #检查控制是否自然
 python scripts\checkkeypoints.py #检查指尖偏移量设置是否正确
 ```
 
-xhand 提供的 urdf 似乎有点问题，如遇到相关错误可以运行 `scripts\check_urdf_inertia.py` 进行检查或者`scripts\fix_urdf_inertia.py` 进行修复。
-
-
-
-
+> xhand 提供的 urdf 似乎有点问题，如遇到相关错误可以运行 `scripts\check_urdf_inertia.py` 进行检查或者`scripts\fix_urdf_inertia.py` 进行修复。
 
 ---
 
@@ -69,6 +103,8 @@ python geort/mocap/mediapipe_mocap.py --name rot_alex
 ```
 
 输出数据保存在 `data/rot_alex.npy`，用于训练。
+
+(仓库中已经提供了 `data/rot_alex.npy` )
 
 ---
 
