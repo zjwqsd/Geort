@@ -1,5 +1,6 @@
 import time
 import argparse
+from geort.env import hand
 from geort.mocap.replay_mocap import ReplayMocap
 from geort.env.hand import HandKinematicModel
 from geort import load_model, get_config
@@ -26,16 +27,30 @@ def main():
     # Run!
     frame_time = 0.01  # 每帧的时间间隔（秒），固定为 1/100 秒
     while True:
+        first_checked = False
+        lower, upper = hand.get_joint_limit()
         start_time = time.time()
 
         for i in range(10):
             viewer_env.update()
 
         result = mocap.get()
-        # print("[Debug] Mocap Result:", result)  # 打印结果，确保数据是有效的
-
         if result['status'] == 'recording' and result["result"] is not None:
-            qpos = model.forward(result["result"])
+            raw = result["result"]
+
+            if not first_checked:
+                first_checked = True
+                import numpy as np
+                arr = np.asarray(raw)
+                if arr.ndim == 2 and arr.shape[-1] == 3:
+                    mins, maxs = arr.min(0), arr.max(0)
+                    span = float((maxs - mins).max())
+                    if span > 3.0:
+                        print("[WARN] 输入点跨度>3m，疑似毫米(mm)，请确认是否需要/1000。")
+
+            qpos = model.forward(raw)             # 仍然直接喂入原始 [N,3]
+            import numpy as np
+            qpos = np.clip(qpos, lower, upper)    # 限幅
             hand.set_qpos_target(qpos)
 
         if result['status'] == 'quit':
